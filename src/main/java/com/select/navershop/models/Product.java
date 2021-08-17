@@ -5,17 +5,17 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Getter // get 함수를 일괄적으로 만들어줍니다.
-@NoArgsConstructor // 기본 생성자를 만들어줍니다.
-@Entity // DB 테이블 역할을 합니다.
+@Getter // get 함수를 일괄적으로 만들어줌
+@NoArgsConstructor // 기본 생성자를 만들어줌
+@Entity // DB 테이블 역할
 public class Product extends Timestamped{
 
-    // ID가 자동으로 생성 및 증가합니다.
+    // ID가 자동으로 생성 및 증가
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
 
-    // 반드시 값을 가지도록 합니다.
+    // 반드시 값을 가지도록 함
     @Column(nullable = false)
     private String title;
 
