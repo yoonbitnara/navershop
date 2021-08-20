@@ -1,13 +1,9 @@
 package com.select.navershop.controller;
 
-import com.select.navershop.models.Product;
-import com.select.navershop.models.ProductRepository;
-import com.select.navershop.models.ProductRequestDto;
+import com.select.navershop.models.*;
+import com.select.navershop.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +12,7 @@ import java.util.List;
 public class ProductRestController {
 
     private final ProductRepository productRepository;
+    private final ProductService productService;
 
     // 등록된 전체 상품 목록 조회
     @GetMapping("/api/products")
@@ -28,6 +25,12 @@ public class ProductRestController {
 
         Product product = new Product(requestDto);
         return productRepository.save(product);
+    }
+
+    @PutMapping("/api/products/{id}")
+    public Long updatePrice(@PathVariable Long id, @RequestBody ProductMypriceRequestDto requestDto) {
+
+        return productService.update(id, requestDto);
     }
 
 }

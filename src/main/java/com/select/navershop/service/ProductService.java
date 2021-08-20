@@ -1,5 +1,6 @@
 package com.select.navershop.service;
 
+import com.select.navershop.models.ItemDto;
 import com.select.navershop.models.Product;
 import com.select.navershop.models.ProductMypriceRequestDto;
 import com.select.navershop.models.ProductRepository;
@@ -20,6 +21,15 @@ public class ProductService {
                 () -> new NullPointerException("아이디가 존재하지 않습니다.")
         );
         product.update(requestDto);
+        return id;
+    }
+
+    @Transactional
+    public Long updateBySearch(Long id, ItemDto itemDto) {
+        Product product = productRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("아이디가 존재하지 않습니다.")
+        );
+        product.updateByItemDto(itemDto);
         return id;
     }
 }
