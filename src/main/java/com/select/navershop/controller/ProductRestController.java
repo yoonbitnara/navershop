@@ -28,9 +28,15 @@ public class ProductRestController {
     }
 
     @PutMapping("/api/products/{id}")
-    public Long updatePrice(@PathVariable Long id, @RequestBody ProductMypriceRequestDto requestDto) {
+    public Long updateProduct(@PathVariable Long id, @RequestBody ProductMypriceRequestDto requestDto) {
 
         return productService.update(id, requestDto);
+    }
+
+    @DeleteMapping("api/products/{id}")
+    public Long deleteProducts(@PathVariable Long id) {
+        productRepository.deleteById(id);
+        return id;
     }
 
 }

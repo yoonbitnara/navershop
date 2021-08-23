@@ -80,6 +80,7 @@ function addHTML(itemDto) {
                 <div class="price">
                     ${numberWithCommas(itemDto.lprice)}
                     <span class="unit">원</span>
+                    
                 </div>
             </div>
             <div class="search-itemDto-right">
@@ -185,5 +186,17 @@ function setMyprice() {
             window.location.reload();
         }
 
+    })
+}
+
+function deleteProduct() {
+    $.ajax({
+        type: "DELETE",
+        url: `/api/products/${targetId}`,
+        success: function (response) {
+            alert("삭제되었습니다.");
+            targetId.remove();
+            window.location.reload();
+        }
     })
 }
