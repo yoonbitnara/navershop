@@ -137,7 +137,7 @@ function showProduct() {
 
 function addProductItem(product) {
     // link, image, title, lprice, myprice 변수 활용하기
-    return ` <div class="product-card" onclick="window.location.href='${product.link}'">
+    return `<div class="product-card" onclick="window.location.href='${product.link}'">
             <div class="card-header">
                 <img src="${product.image}"
                      alt="">
